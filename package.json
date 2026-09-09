@@ -12,17 +12,11 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
     "framer-motion": "^13.2.0",
-<<<<<<< HEAD
     "lucide-react": "^1.42.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3",
     "tesseract.js": "^7.0.0"
-=======
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "tailwindcss": "^4.3.3"
->>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
   },
   "devDependencies": {
     "@types/react": "^19.2.18",
