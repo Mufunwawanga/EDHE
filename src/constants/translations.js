@@ -1,7 +1,10 @@
 export const TRANSLATIONS = {
   en: {
+<<<<<<< HEAD
     mainAccount: "MAIN BUSINESS ACCOUNT",
     quickActions: "Quick Actions",
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     chooseLanguage: "Choose your preferred language for recording daily informal trade and building verifiable credit history.",
     multiLanguageSupport: "Multi-language operational support for South African traders",
     registerBusiness: "Register Business",
@@ -23,7 +26,11 @@ export const TRANSLATIONS = {
     topUpWallet: "Top Up Wallet",
     signIn: "Sign In (Free)",
     home: "Home",
+<<<<<<< HEAD
     pos: "Fast Counter POS",
+=======
+    pos: "POS",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     stock: "Stock",
     reviews: "Reviews",
     creditId: "Credit ID",
@@ -108,7 +115,11 @@ export const TRANSLATIONS = {
     recordCompleteness: "Record Completeness",
     todaysRevenue: "Today's Revenue",
     operatingExpenses: "Operating Expenses",
+<<<<<<< HEAD
     netProfit: "Today's Net Profit",
+=======
+    netProfit: "Estimated Profit",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     customSale: "+ Custom Sale",
     addLineItem: "+ Add Line Item",
     statementPreview: "Official Business Statement",
@@ -121,8 +132,11 @@ export const TRANSLATIONS = {
     itemName: "Item / Description",
   },
   zu: {
+<<<<<<< HEAD
     mainAccount: "I-AKHAWUNTI YEBHIZINISI ENKULU",
     quickActions: "Izenzo Ezisheshayo",
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     chooseLanguage: "Khetha ulimi lwakho osukume ukurekhoda okweshukela nsuku zonke nokwakha umlando ongacaciswe wezimali.",
     multiLanguageSupport: "Ukusekelwa kolimi oluningi kubathengisi baseNingizimu Afrika",
     registerBusiness: "Bhalisa Isikhungo",
@@ -141,7 +155,11 @@ export const TRANSLATIONS = {
     topUpWallet: "Geza I-Wallet",
     signIn: "Ngena ({fee})",
     home: "Ekhaya",
+<<<<<<< HEAD
     pos: "I-POS Yesikhwama Esisheshayo",
+=======
+    pos: "I-POS",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     stock: "I-Stokhi",
     reviews: "Ukuhlola",
     creditId: "I-ID Ye-Credit",
@@ -222,7 +240,11 @@ export const TRANSLATIONS = {
     recordCompleteness: "Ukuqeda Kwamarekhodi",
     todaysRevenue: "Inzuzo Yanamuhla",
     operatingExpenses: "Izindleko Zokusebenza",
+<<<<<<< HEAD
     netProfit: "Inzuzo Ehlanzekile Yanamuhla",
+=======
+    netProfit: "Inzuzo Elinganiselwe",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     customSale: "+ Ukuthengisa Okulula",
     addLineItem: "+ Engeza Intho",
     statementPreview: "Isitatimende Esemthethweni",
@@ -235,8 +257,11 @@ export const TRANSLATIONS = {
     itemName: "Igama Lento",
   },
   xh: {
+<<<<<<< HEAD
     mainAccount: "I-AKHAWUNTI YOSHISHINO ENKULU",
     quickActions: "Izenzo Ezikhawulezayo",
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     chooseLanguage: "Khetha ulimi lwakho ofuna ukurekhoda inkambo yemini yonke nokwakha umlando ongacaciswe wezimali.",
     multiLanguageSupport: "Ukusekelwa kolimi oluningi kubathengisi baseMzantsi Afrika",
     registerBusiness: "Bhalisa Isikhungo",
@@ -255,7 +280,11 @@ export const TRANSLATIONS = {
     topUpWallet: "Geza I-Wallet",
     signIn: "Ngena ({fee})",
     home: "Ekhaya",
+<<<<<<< HEAD
     pos: "I-POS Yekhawunta Ekhawulezayo",
+=======
+    pos: "I-POS",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     stock: "I-Stokhi",
     reviews: "Ukuhlola",
     creditId: "I-ID Ye-Credit",
@@ -336,7 +365,11 @@ export const TRANSLATIONS = {
     recordCompleteness: "Ukuqeda Kwamarekhodi",
     todaysRevenue: "Ingeniso Yanamhla",
     operatingExpenses: "Iindleko Zokusebenza",
+<<<<<<< HEAD
     netProfit: "Inzuzo Enyanisileyo Yanamhlanje",
+=======
+    netProfit: "Inzuzo Elinganiselweyo",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     customSale: "+ Ukuthengisa Okulula",
     addLineItem: "+ Faka Intho",
     statementPreview: "Isitatimende Esemthethweni",
@@ -349,8 +382,11 @@ export const TRANSLATIONS = {
     itemName: "Igama Lento",
   },
   af: {
+<<<<<<< HEAD
     mainAccount: "HOOF BESIGHEIDSREKENING",
     quickActions: "Vinnige Aksies",
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     chooseLanguage: "Kies u verkose taal vir die opneem van daaglikse informele handel en die bou van 'n verifieerbare kredietgeskiedenis.",
     multiLanguageSupport: "Meertalige operasionele ondersteuning vir Suid-Afrikaanse handelaars",
     registerBusiness: "Registreer Besigheid",
@@ -369,7 +405,11 @@ export const TRANSLATIONS = {
     topUpWallet: "Vul Beurs Op",
     signIn: "Teken In ({fee})",
     home: "Tuis",
+<<<<<<< HEAD
     pos: "Vinnige Toonbank-POS",
+=======
+    pos: "POS",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     stock: "Voorraad",
     reviews: "Oorsigte",
     creditId: "Krediet ID",
@@ -450,7 +490,11 @@ export const TRANSLATIONS = {
     recordCompleteness: "Rekord Volledigheid",
     todaysRevenue: "Vandag se Inkomste",
     operatingExpenses: "Bedryfsuitgawes",
+<<<<<<< HEAD
     netProfit: "Vandag se Netto Wins",
+=======
+    netProfit: "Beraamde Wins",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     customSale: "+ Pasgemaakte Verkope",
     addLineItem: "+ Voeg Item By",
     statementPreview: "Amptelike Besigheidsverklaring",
@@ -463,8 +507,11 @@ export const TRANSLATIONS = {
     itemName: "Item / Beskrywing",
   },
   st: {
+<<<<<<< HEAD
     mainAccount: "AKHAONTE EA KHOEBO EA SEHLOOHO",
     quickActions: "Liketso Tse Potlakileng",
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     chooseLanguage: "Kgetha puo ea hau ea ho rekota khoebo ea letsatsi le letsatsi le ho theha histori ya mali eo e ka netefatsang.",
     multiLanguageSupport: "Tšehetso ya puo e ngata bakeng sa bahlahisi ba Afrika Borwa",
     registerBusiness: "Bhalisa Khoebo",
@@ -483,7 +530,11 @@ export const TRANSLATIONS = {
     topUpWallet: "Tlatsa Wallet",
     signIn: "Kena ({fee})",
     home: "Hae",
+<<<<<<< HEAD
     pos: "POS ea Khaunda e Potlakileng",
+=======
+    pos: "POS",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     stock: "Stock",
     reviews: "Dikahisano",
     creditId: "ID ya Credit",
@@ -499,7 +550,11 @@ export const TRANSLATIONS = {
     quickPosDesc: "Rekota khoebo ea bareki ya potlako",
     logExpense: "Record Expense",
     logExpenseDesc: "Stock, electricity, taxi fares",
+<<<<<<< HEAD
     recentTransactions: "Litšebelisano Tsa Haufinyane",
+=======
+    recentTransactions: "Dikahisano tsa Haufi",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     record: "+ Rekota",
     fastTapSell: "Ho Reka ha Potlako",
     sell: "+ Reka",
@@ -564,7 +619,11 @@ export const TRANSLATIONS = {
     recordCompleteness: "Palo ya Dikahisano",
     todaysRevenue: "Madi a Keno a Kajeno",
     operatingExpenses: "Ditshenyhelo tsa ho Sebetsa",
+<<<<<<< HEAD
     netProfit: "Phaello ea Kajeno",
+=======
+    netProfit: "Inzuzo e Etsang",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     customSale: "+ Thekiso e Itekanetseng",
     addLineItem: "+ Eketsa Item",
     statementPreview: "Setatemente sa Semolao",
@@ -577,8 +636,11 @@ export const TRANSLATIONS = {
     itemName: "Lebitso la Item",
   },
   nso: {
+<<<<<<< HEAD
     mainAccount: "AKHAONTE YE KGOLO YA KGWEBO",
     quickActions: "Ditiro tša ka Pela",
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     chooseLanguage: "Kgetha polelo ya gago go rekhoda kgwebo ya letsatsi le letsatsi le go thela histori ya mali yeo e ka netefatšago.",
     multiLanguageSupport: "Tšešetšo ya polelo e ngata bakeng sa bahlagisi ba Afrika Borwa",
     registerBusiness: "Bhalisa Kgwebo",
@@ -597,7 +659,11 @@ export const TRANSLATIONS = {
     topUpWallet: "Tlatsa Wallet",
     signIn: "Kena ({fee})",
     home: "Gae",
+<<<<<<< HEAD
     pos: "POS ya Khautha ya ka Pela",
+=======
+    pos: "POS",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     stock: "Stock",
     reviews: "Dikahisano",
     creditId: "ID ya Credit",
@@ -613,7 +679,11 @@ export const TRANSLATIONS = {
     quickPosDesc: "Rekhoda kgwebo ya bareki ya potlakšo",
     logExpense: "Record Expense",
     logExpenseDesc: "Stock, electricity, taxi fares",
+<<<<<<< HEAD
     recentTransactions: "Ditshepedišo tša Bjale",
+=======
+    recentTransactions: "Dikahisano tsa Haufi",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     record: "+ Rekhoda",
     fastTapSell: "Go Reka ga Potlakšo",
     sell: "+ Reka",
@@ -678,7 +748,11 @@ export const TRANSLATIONS = {
     recordCompleteness: "Palo ya Dikahisano",
     todaysRevenue: "Inkomo ya Lehono",
     operatingExpenses: "Ditshenyagalelo tsa ho Šoma",
+<<<<<<< HEAD
     netProfit: "Poelo ya Lehono",
+=======
+    netProfit: "Poelo e Akanyeditsweng",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     customSale: "+ Thekiso e Kgethegilego",
     addLineItem: "+ Oketša Item",
     statementPreview: "Setatemente sa Semolao",
@@ -691,8 +765,11 @@ export const TRANSLATIONS = {
     itemName: "Leina la Item",
   },
   ve: {
+<<<<<<< HEAD
     mainAccount: "AKHAWUNTHU KHULWANE YA VHUDZINDAVHA",
     quickActions: "Nyito dza u Tavhanya",
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     chooseLanguage: "Nangani luambo lwa lune lwa u ṱala ndila ya muṱe wa ṱhoho u itela u vha na histori ya mali ino ṱhisea.",
     multiLanguageSupport: "Tshiṱikiṱiki tsha luambo luṱhe kha vhaṱhangani vha Afurika Tshipembe",
     registerBusiness: "Ṱhalisa Buisini",
@@ -711,7 +788,11 @@ export const TRANSLATIONS = {
     topUpWallet: "Ṱhaisa Wallet",
     signIn: "Kena ({fee})",
     home: "Hayani",
+<<<<<<< HEAD
     pos: "POS ya Khauthara ya u Tavhanya",
+=======
+    pos: "POS",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     stock: "Stock",
     reviews: "Dzianamuswo",
     creditId: "ID ya Credit",
@@ -792,7 +873,11 @@ export const TRANSLATIONS = {
     recordCompleteness: "Palo ya Dzianamuswo",
     todaysRevenue: "Mbuelo ya ṋamusi",
     operatingExpenses: "Zwitshimbili tsha u Ṱwala",
+<<<<<<< HEAD
     netProfit: "Mbinguelo ya Namusi",
+=======
+    netProfit: "Bindu ḽi vhavhaho",
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     customSale: "+ U Ṱala ho Khethekaho",
     addLineItem: "+ Engedza Tshithu",
     statementPreview: "Setatemente tsha Semolao",
@@ -805,6 +890,7 @@ export const TRANSLATIONS = {
     itemName: "Dzina ḽa Tshithu",
   },
 };
+<<<<<<< HEAD
 
 TRANSLATIONS.ns = TRANSLATIONS.nso;
 TRANSLATIONS.EN = TRANSLATIONS.en;
@@ -815,3 +901,5 @@ TRANSLATIONS.ST = TRANSLATIONS.st;
 TRANSLATIONS.NS = TRANSLATIONS.nso;
 TRANSLATIONS.NSO = TRANSLATIONS.nso;
 TRANSLATIONS.VE = TRANSLATIONS.ve;
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c

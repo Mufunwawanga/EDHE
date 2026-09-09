@@ -8,11 +8,15 @@ import {
   fmtMoney,
 } from "../constants/data";
 import { TRANSLATIONS } from "../constants/translations";
+<<<<<<< HEAD
 import { db } from "../services/db";
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
 
 const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
+<<<<<<< HEAD
   // 1. Core Universal State initialized from src/services/db.js
   const [profile, setProfile] = useState(() => db.getProfile());
   const [catalog, setCatalog] = useState(() => db.getCatalog());
@@ -95,11 +99,23 @@ export function AppProvider({ children }) {
     if (saved !== null) return saved === "true";
     const initialProfile = db.getProfile();
     return Boolean(initialProfile?.isConfigured);
+=======
+  // Persistence mirroring Room DB & DataStore
+  const [language, setLanguage] = useState(() => localStorage.getItem("cash2cred_lang") || null);
+  const [profile, setProfile] = useState(() => {
+    const saved = localStorage.getItem("cash2cred:profile") || localStorage.getItem("cash2cred_profile");
+    return saved ? JSON.parse(saved) : null;
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
   });
   const [wallet, setWallet] = useState(() => {
     const saved = localStorage.getItem("cash2cred_wallet");
     return saved !== null ? parseFloat(saved) : INITIAL_WALLET;
   });
+<<<<<<< HEAD
+=======
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currency, setCurrency] = useState(() => localStorage.getItem("cash2cred_currency") || "ZAR");
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
 
   // Monetization & Subscription
   const [isPremium, setIsPremium] = useState(() => {
@@ -108,6 +124,7 @@ export function AppProvider({ children }) {
   });
   const [subscriptionModal, setSubscriptionModal] = useState(false);
 
+<<<<<<< HEAD
   // Navigation
   const [screen, setScreenState] = useState("home"); // home, pos, inventory, reviews, access, creditId
   const [screenHistory, setScreenHistory] = useState(["home"]);
@@ -156,6 +173,10 @@ export function AppProvider({ children }) {
   };
 
   const [reviewPeriod, setReviewPeriod] = useState("week"); // day, week, month
+=======
+  // Voice Tally Modal
+  const [voiceTallyModal, setVoiceTallyModal] = useState(false);
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
 
   // Load-Shedding & Data Shield (Low-Connectivity Offline Queue)
   const [isOffline, setIsOffline] = useState(() => localStorage.getItem("cash2cred_offline") === "true");
@@ -165,6 +186,40 @@ export function AppProvider({ children }) {
   });
   const [syncNotification, setSyncNotification] = useState("");
 
+<<<<<<< HEAD
+=======
+  const [products, setProducts] = useState(() => {
+    const saved = localStorage.getItem("cash2cred:products") || localStorage.getItem("cash2cred_products");
+    if (saved) return JSON.parse(saved);
+    const savedProfile = localStorage.getItem("cash2cred:profile") || localStorage.getItem("cash2cred_profile");
+    const businessType = savedProfile ? JSON.parse(savedProfile).businessType : "";
+    return generateBusinessPresets(businessType).items;
+  });
+
+  const [expenseCategories, setExpenseCategories] = useState(() => {
+    const savedProfile = localStorage.getItem("cash2cred:profile") || localStorage.getItem("cash2cred_profile");
+    const businessType = savedProfile ? JSON.parse(savedProfile).businessType : "";
+    return generateBusinessPresets(businessType).expenseCategories;
+  });
+
+  const [transactions, setTransactions] = useState(() => {
+    const saved = localStorage.getItem("cash2cred:transactions") || localStorage.getItem("cash2cred_txs");
+    if (saved) return JSON.parse(saved);
+    const savedProfile = localStorage.getItem("cash2cred:profile") || localStorage.getItem("cash2cred_profile");
+    const businessType = savedProfile ? JSON.parse(savedProfile).businessType : "";
+    return generateBusinessPresets(businessType).starterTransactions;
+  });
+
+  const [partnersAccess, setPartnersAccess] = useState(() => {
+    const saved = localStorage.getItem("cash2cred_access");
+    return saved ? JSON.parse(saved) : { a1: true };
+  });
+
+  // Navigation
+  const [screen, setScreen] = useState("home"); // home, pos, inventory, reviews, access
+  const [reviewPeriod, setReviewPeriod] = useState("week"); // day, week, month
+
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
   // Modals
   const [saleModal, setSaleModal] = useState(null);
   const [customSaleModal, setCustomSaleModal] = useState(false);
@@ -173,6 +228,7 @@ export function AppProvider({ children }) {
   const [topUpModal, setTopUpModal] = useState(false);
   const [showStatementModal, setShowStatementModal] = useState(false);
   const [snapLogModal, setSnapLogModal] = useState(false);
+<<<<<<< HEAD
   const [voiceTallyModal, setVoiceTallyModal] = useState(false);
   const [slipReceiptModal, setSlipReceiptModal] = useState(false);
 
@@ -184,6 +240,8 @@ export function AppProvider({ children }) {
     setTodayOcrScansCount(next);
     return next;
   }
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
 
   // Form Inputs
   const [customSaleName, setCustomSaleName] = useState("");
@@ -200,6 +258,7 @@ export function AppProvider({ children }) {
   const [snapLogImage, setSnapLogImage] = useState(null);
   const [extractedTransactions, setExtractedTransactions] = useState([]);
 
+<<<<<<< HEAD
   // Expense Categories (Adaptive)
   const [expenseCategories, setExpenseCategories] = useState(() => [
     "Raw Materials & Stock",
@@ -225,10 +284,16 @@ export function AppProvider({ children }) {
     if (language) localStorage.setItem("cash2cred_lang", language);
     if (profile) {
       db.saveProfile(profile);
+=======
+  useEffect(() => {
+    if (language) localStorage.setItem("cash2cred_lang", language);
+    if (profile) {
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
       localStorage.setItem("cash2cred:profile", JSON.stringify(profile));
       localStorage.setItem("cash2cred_profile", JSON.stringify(profile));
     }
     localStorage.setItem("cash2cred_wallet", wallet.toString());
+<<<<<<< HEAD
     if (catalog) {
       db.saveCatalog(catalog);
       localStorage.setItem("cash2cred:products", JSON.stringify(catalog));
@@ -239,11 +304,18 @@ export function AppProvider({ children }) {
       localStorage.setItem("cash2cred:transactions", JSON.stringify(transactions));
       localStorage.setItem("cash2cred_txs", JSON.stringify(transactions));
     }
+=======
+    localStorage.setItem("cash2cred:products", JSON.stringify(products));
+    localStorage.setItem("cash2cred_products", JSON.stringify(products));
+    localStorage.setItem("cash2cred:transactions", JSON.stringify(transactions));
+    localStorage.setItem("cash2cred_txs", JSON.stringify(transactions));
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     localStorage.setItem("cash2cred_access", JSON.stringify(partnersAccess));
     localStorage.setItem("cash2cred_currency", currency);
     localStorage.setItem("cash2cred_premium", isPremium.toString());
     localStorage.setItem("cash2cred_offline", isOffline.toString());
     localStorage.setItem("cash2cred_offline_queue", offlineQueueCount.toString());
+<<<<<<< HEAD
   }, [language, profile, wallet, catalog, transactions, partnersAccess, currency, isPremium, isOffline, offlineQueueCount]);
 
   /**
@@ -457,10 +529,23 @@ export function AppProvider({ children }) {
     },
   });
 
+=======
+  }, [language, profile, wallet, products, transactions, partnersAccess, currency, isPremium, isOffline, offlineQueueCount]);
+
+  // Translation helper
+  function t(key, params = {}) {
+    const lang = language || "en";
+    const text = TRANSLATIONS[lang]?.[key] || TRANSLATIONS["en"][key] || key;
+    return Object.entries(params).reduce((str, [k, v]) => str.replace(`{${k}}`, v), text);
+  }
+
+  // Format currency helper
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
   function fmt(n) {
     return fmtMoney(n, currency);
   }
 
+<<<<<<< HEAD
   function handleCreateAccount(nameInput, storeInput, businessTypeInput, phoneInput, openingFloat = 0) {
     if (!nameInput.trim()) return;
     const businessType = businessTypeInput.trim() || "General Trade";
@@ -474,11 +559,39 @@ export function AppProvider({ children }) {
       openingFloat: parseFloat(openingFloat) || 0,
       isConfigured: true,
     });
+=======
+  function handleCreateAccount(nameInput, storeInput, businessTypeInput, phoneInput) {
+    if (!nameInput.trim()) return;
+    const businessType = businessTypeInput.trim() || "General Trade";
+    const presets = generateBusinessPresets(businessType);
+    const newProfile = {
+      ownerName: nameInput.trim(),
+      storeName: storeInput.trim() || `${nameInput.trim()}'s ${businessType}`,
+      businessType,
+      phone: phoneInput.trim() || "072 000 0000",
+      accessCode: "C2C-ZA-" + Math.random().toString(36).substring(2, 7).toUpperCase(),
+      walletBalance: INITIAL_WALLET,
+    };
+    setProfile(newProfile);
+    setProducts(presets.items);
+    setExpenseCategories(presets.expenseCategories);
+    setTransactions(presets.starterTransactions);
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     setIsLoggedIn(true);
   }
 
   function resetToFirstPage() {
+<<<<<<< HEAD
     resetAppToNewTrader();
+=======
+    setLanguage(null);
+    setProfile(null);
+    setIsLoggedIn(false);
+    setScreen("home");
+    localStorage.removeItem("cash2cred_lang");
+    localStorage.removeItem("cash2cred_profile");
+    localStorage.removeItem("cash2cred:profile");
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
   }
 
   function goBackToLanguage() {
@@ -487,22 +600,73 @@ export function AppProvider({ children }) {
 
   function goBackToRegistration() {
     setIsLoggedIn(false);
+<<<<<<< HEAD
   }
 
   function handleTopUp(amount) {
     const amt = parseFloat(amount);
     if (!amt || isNaN(amt)) return;
     setWallet((prev) => prev + amt);
+=======
+    setProfile(null);
+  }
+
+  function handleTopUp(amount) {
+    const val = parseFloat(amount);
+    if (!val || val <= 0) return;
+    setWallet((w) => w + val);
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     setTopUpModal(false);
     setTopUpCustom("");
   }
 
+<<<<<<< HEAD
   function logSaleItem(itemName, amountValue, qtyValue = 1, costValue = 0) {
     recordSale({
       description: itemName,
       amount: parseFloat(amountValue) || 0,
       cost: parseFloat(costValue) || 0,
       qty: parseInt(qtyValue, 10) || 1,
+=======
+  function logSaleItem(itemName, amountValue, qtyValue = 1) {
+    const amt = parseFloat(amountValue);
+    const trimmedName = (itemName || "").trim();
+    if (!amt || !trimmedName) return;
+    const qty = parseInt(qtyValue) || 1;
+    const total = amt * qty;
+    const newTx = {
+      id: "tx-" + Date.now() + Math.random(),
+      type: "sale",
+      name: trimmedName,
+      qty,
+      amount: total,
+      paymentMethod: "cash",
+      ts: Date.now(),
+    };
+    setTransactions((prev) => [newTx, ...prev]);
+
+    if (isOffline) {
+      setOfflineQueueCount((prev) => {
+        const next = prev + 1;
+        localStorage.setItem("cash2cred_offline_queue", next.toString());
+        return next;
+      });
+    }
+
+    // Automatically append custom item to product catalog if not present
+    setProducts((prevProducts) => {
+      const exists = (prevProducts || []).some(
+        (p) => p.name.toLowerCase() === trimmedName.toLowerCase()
+      );
+      if (!exists) {
+        const newProduct = {
+          id: "i-" + Date.now() + Math.random(),
+          name: trimmedName,
+        };
+        return [...prevProducts, newProduct];
+      }
+      return prevProducts;
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     });
   }
 
@@ -511,16 +675,49 @@ export function AppProvider({ children }) {
     const trimmedCategory = (categoryName || "").trim();
     if (!amt || !trimmedCategory) return;
     const displayName = notes.trim() ? `${trimmedCategory} (${notes.trim()})` : trimmedCategory;
+<<<<<<< HEAD
     recordExpense({
       description: displayName,
       amount: amt,
       category: trimmedCategory,
     });
+=======
+    const newTx = {
+      id: "exp-" + Date.now() + Math.random(),
+      type: "expense",
+      name: displayName,
+      qty: 1,
+      amount: amt,
+      ts: Date.now(),
+    };
+    setTransactions((prev) => [newTx, ...prev]);
+
+    if (isOffline) {
+      setOfflineQueueCount((prev) => {
+        const next = prev + 1;
+        localStorage.setItem("cash2cred_offline_queue", next.toString());
+        return next;
+      });
+    }
+
+    // Automatically append custom expense category if not present
+    setExpenseCategories((prevCategories) => {
+      const exists = (prevCategories || []).some(
+        (c) => c.toLowerCase() === trimmedCategory.toLowerCase()
+      );
+      if (!exists) {
+        return [...(prevCategories || []), trimmedCategory];
+      }
+      return prevCategories;
+    });
+
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     setExpenseModal(false);
     setExpenseTitle("");
     setExpenseAmount("");
   }
 
+<<<<<<< HEAD
   function logSale(prod, qty, customPrice) {
     const unitPrice = customPrice !== undefined ? parseFloat(customPrice) : (prod.sellingPrice || prod.price || 0);
     const unitCost = prod.costPrice || prod.cost || 0;
@@ -581,6 +778,8 @@ export function AppProvider({ children }) {
     setRestockModal(null);
   }
 
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
   function toggleOffline() {
     if (isOffline) {
       setIsOffline(false);
@@ -601,6 +800,7 @@ export function AppProvider({ children }) {
   }
 
   function confirmVoiceTally(item) {
+<<<<<<< HEAD
     const amt = parseFloat(item.amount || item.total) || 54;
     const qty = parseInt(item.qty, 10) || 1;
     const name = (item.name || item.item || "Voice Order").trim();
@@ -613,10 +813,71 @@ export function AppProvider({ children }) {
     setVoiceTallyModal(false);
   }
 
+=======
+    const amt = parseFloat(item.amount) || 54;
+    const qty = parseInt(item.qty, 10) || 3;
+    const name = (item.name || "Albany Superior Bread").trim();
+    const newTx = {
+      id: "tx-voice-" + Date.now(),
+      type: "sale",
+      name,
+      qty,
+      amount: amt,
+      source: "voice",
+      paymentMethod: "cash",
+      ts: Date.now(),
+    };
+    setTransactions((prev) => [newTx, ...prev]);
+
+    if (isOffline) {
+      setOfflineQueueCount((prev) => {
+        const next = prev + 1;
+        localStorage.setItem("cash2cred_offline_queue", next.toString());
+        return next;
+      });
+    }
+
+    setVoiceTallyModal(false);
+  }
+
+  function logSale(prod, qty, customPrice) {
+    const unitPrice = customPrice !== undefined ? parseFloat(customPrice) : (prod.price || 0);
+    logSaleItem(prod.name, unitPrice, qty);
+    setSaleModal(null);
+  }
+
+  function quickLogSale(prod, amountValue) {
+    logSaleItem(prod.name, amountValue || 50);
+  }
+
+  function logCustomSale() {
+    const amt = parseFloat(customSaleAmount);
+    if (!amt || !customSaleName.trim()) return;
+    logSaleItem(customSaleName.trim(), amt, 1);
+    setCustomSaleModal(false);
+    setCustomSaleName("");
+    setCustomSaleAmount("");
+  }
+
+  function logExpense() {
+    const amt = parseFloat(expenseAmount);
+    if (!amt || !expenseTitle.trim()) return;
+    logExpenseItem(expenseTitle.trim(), amt);
+  }
+
+  function confirmRestock() {
+    if (!restockModal) return;
+    setProducts(products.map((p) => (p.id === restockModal.id ? { ...p, stock: (p.stock || 0) + restockQty } : p)));
+    setRestockModal(null);
+  }
+
+  // Snap-Log Functions
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
   function handleSnapLogFileSelect(e) {
     const file = e.target.files && e.target.files[0];
     if (file) {
       const reader = new FileReader();
+<<<<<<< HEAD
       reader.onload = (uploadEvent) => {
         setSnapLogImage(uploadEvent.target.result);
         handleSnapLogUpload(uploadEvent.target.result);
@@ -639,17 +900,59 @@ export function AppProvider({ children }) {
       setExtractedTransactions(simulatedItems);
       setSnapLogStep("review");
     }, 1100);
+=======
+      reader.onload = (evt) => {
+        setSnapLogImage(evt.target.result);
+        handleSnapLogUpload();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      handleSnapLogUpload();
+    }
+  }
+
+  function handleSnapLogUpload() {
+    setSnapLogStep("parsing");
+    setSnapLogProgress(0);
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 20;
+      setSnapLogProgress(Math.min(100, progress));
+      if (progress >= 100) {
+        clearInterval(interval);
+        simulateExtraction();
+      }
+    }, 150);
+  }
+
+  function simulateExtraction() {
+    setTimeout(() => {
+      const presets = generateBusinessPresets(profile?.businessType);
+      setExtractedTransactions(presets.simulatedOcr);
+      setSnapLogStep("review");
+    }, 400);
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
   }
 
   function addSnapLogLineItem() {
     setExtractedTransactions((prev) => [
       ...prev,
       {
+<<<<<<< HEAD
         id: "ocr-" + Date.now(),
         type: "sale",
         name: "New Entry",
         qty: 1,
         amount: 50.0,
+=======
+        id: "ext-" + Date.now() + Math.random(),
+        type: "sale",
+        name: "Custom Service Item",
+        qty: 1,
+        amount: 100.0,
+        editable: true,
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
       },
     ]);
   }
@@ -671,6 +974,7 @@ export function AppProvider({ children }) {
   }
 
   function confirmSnapLogImport() {
+<<<<<<< HEAD
     const newTransactions = extractedTransactions.map((tx) => {
       const amt = parseFloat(tx.amount) || 0;
       const cost = parseFloat(tx.cost) || (tx.type === "expense" ? amt : 0);
@@ -695,6 +999,18 @@ export function AppProvider({ children }) {
     db.saveTransactions(updated);
     setTransactions(updated);
     setMetrics(db.calculateMetrics());
+=======
+    const newTransactions = extractedTransactions.map((tx) => ({
+      id: "tx-" + Date.now() + Math.random(),
+      type: tx.type,
+      name: tx.name,
+      qty: parseFloat(tx.qty) || 1,
+      amount: parseFloat(tx.amount) || 0,
+      ts: Date.now(),
+    }));
+
+    setTransactions((prev) => [...newTransactions, ...prev]);
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     setSnapLogModal(false);
     setSnapLogStep("photo");
     setExtractedTransactions([]);
@@ -710,21 +1026,36 @@ export function AppProvider({ children }) {
     return `======================================
 CASH2CRED VERIFIED BUSINESS STATEMENT
 ======================================
+<<<<<<< HEAD
 Store Name:     ${profile?.businessName || profile?.storeName || "My Enterprise"}
 Owner Name:     ${profile?.ownerName || "Trader"}
 Mobile Number:  ${profile?.phone || "N/A"}
 Business Type:  ${(profile?.category || profile?.businessType || "General Trade").toUpperCase()}
 Access Code:    ${profile?.passportCode || profile?.accessCode || "N/A"}
+=======
+Store Name:     ${profile?.storeName || "N/A"}
+Owner Name:     ${profile?.ownerName || "N/A"}
+Mobile Number:  ${profile?.phone || "N/A"}
+Business Type:  ${(profile?.businessType || "").toUpperCase()}
+Access Code:    ${profile?.accessCode || "N/A"}
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
 Statement Date: ${new Date().toLocaleDateString()}
 --------------------------------------
 FINANCIAL PERFORMANCE SUMMARY (${currency}):
 Total Turnover:          ${fmt(totalRevenue)}
 Total Operating Expense:  ${fmt(totalExpenses)}
 Net Retained Profit:     ${fmt(netProfit)}
+<<<<<<< HEAD
 Gross Profit Margin:     ${margin}%
 --------------------------------------
 GROWTH READINESS AUDIT:
 Overall Readiness Score: ${growthScore}/100 (${metrics.statusBand})
+=======
+Net Profit Margin:       ${margin}%
+--------------------------------------
+GROWTH READINESS AUDIT:
+Overall Readiness Score: ${growthScore}/100
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
 Active Days Recorded:    ${activeDays} Days
 Active Recording Streak:  ${activeStreak} Days
 Total Ledger Entries:    ${transactions.length} Records
@@ -732,6 +1063,7 @@ Total Ledger Entries:    ${transactions.length} Records
 PRE-APPROVED CREDIT PARTNERS SHARED:
 ${sharedPartners || "None (Access restricted by merchant)"}
 ======================================
+<<<<<<< HEAD
 Verify authenticity at cash2cred.co.za/verify/${profile?.passportCode || profile?.accessCode || ""}`;
   }
 
@@ -747,6 +1079,25 @@ Verify authenticity at cash2cred.co.za/verify/${profile?.passportCode || profile
   const todayNetProfit = metrics.netRetained !== undefined ? metrics.netRetained : 0;
   const growthScore = metrics.growthReadinessScore !== undefined ? metrics.growthReadinessScore : 40;
   const activeJourneyStep = Math.min(JOURNEY_STEPS.length - 1, Math.max(0, Math.floor(growthScore / 17)));
+=======
+Verify authenticity at cash2cred.co.za/verify/${profile?.accessCode || ""}`;
+  }
+
+  // Financial computations
+  const totalRevenue = transactions.filter((t) => t.type === "sale").reduce((acc, c) => acc + (c.amount || 0), 0);
+  const totalExpenses = transactions.filter((t) => t.type === "expense").reduce((acc, c) => acc + (c.amount || 0), 0);
+  const netProfit = totalRevenue - totalExpenses;
+  const margin = totalRevenue > 0 ? Math.round((netProfit / totalRevenue) * 100) : 0;
+  const activeDays = new Set(transactions.map((t) => new Date(t.ts).toDateString())).size;
+  const activeStreak = computeActiveStreak(transactions);
+
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+  const todayStartTs = todayStart.getTime();
+  const todayRevenue = transactions.filter((t) => t.type === "sale" && t.ts >= todayStartTs).reduce((acc, c) => acc + (c.amount || 0), 0);
+  const todayExpenses = transactions.filter((t) => t.type === "expense" && t.ts >= todayStartTs).reduce((acc, c) => acc + (c.amount || 0), 0);
+  const todayNetProfit = todayRevenue - todayExpenses;
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
 
   const growthFactors = [
     { name: t("recordConsistencyScore"), value: Math.min(30, activeStreak * 10), max: 30 },
@@ -754,6 +1105,7 @@ Verify authenticity at cash2cred.co.za/verify/${profile?.passportCode || profile
     { name: t("revenueProfitTrends"), value: margin > 15 ? 25 : Math.min(25, Math.max(0, margin)), max: 25 },
     { name: t("recordCompleteness"), value: Math.min(20, transactions.length * 3), max: 20 },
   ];
+<<<<<<< HEAD
 
   const value = {
     // 1. Initial State & Collections
@@ -785,23 +1137,48 @@ Verify authenticity at cash2cred.co.za/verify/${profile?.passportCode || profile
     currentLanguage,
     language,
     setLanguage,
+=======
+  const growthScore = growthFactors.reduce((sum, f) => sum + f.value, 0);
+  const activeJourneyStep = Math.min(JOURNEY_STEPS.length - 1, Math.max(0, Math.floor(growthScore / 17)));
+
+  const value = {
+    language,
+    setLanguage,
+    profile,
+    setProfile,
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     wallet,
     setWallet,
     isLoggedIn,
     setIsLoggedIn,
     currency,
     setCurrency,
+<<<<<<< HEAD
     expenseCategories,
     setExpenseCategories,
+=======
+    products,
+    setProducts,
+    expenseCategories,
+    setExpenseCategories,
+    transactions,
+    setTransactions,
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     partnersAccess,
     setPartnersAccess,
     screen,
     setScreen,
+<<<<<<< HEAD
     goBack,
     reviewPeriod,
     setReviewPeriod,
 
     // Modals
+=======
+    reviewPeriod,
+    setReviewPeriod,
+
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     saleModal,
     setSaleModal,
     customSaleModal,
@@ -816,6 +1193,7 @@ Verify authenticity at cash2cred.co.za/verify/${profile?.passportCode || profile
     setShowStatementModal,
     snapLogModal,
     setSnapLogModal,
+<<<<<<< HEAD
     voiceTallyModal,
     setVoiceTallyModal,
     slipReceiptModal,
@@ -824,6 +1202,9 @@ Verify authenticity at cash2cred.co.za/verify/${profile?.passportCode || profile
     incrementOcrScansCount,
 
     // Form inputs
+=======
+
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     customSaleName,
     setCustomSaleName,
     customSaleAmount,
@@ -839,7 +1220,10 @@ Verify authenticity at cash2cred.co.za/verify/${profile?.passportCode || profile
     shareFeedback,
     setShareFeedback,
 
+<<<<<<< HEAD
     // Snap-Log
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     snapLogStep,
     setSnapLogStep,
     snapLogProgress,
@@ -849,7 +1233,10 @@ Verify authenticity at cash2cred.co.za/verify/${profile?.passportCode || profile
     extractedTransactions,
     setExtractedTransactions,
 
+<<<<<<< HEAD
     // Helpers
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     t,
     fmt,
     handleCreateAccount,
@@ -871,10 +1258,14 @@ Verify authenticity at cash2cred.co.za/verify/${profile?.passportCode || profile
     toggleSnapLogTxType,
     confirmSnapLogImport,
     getStatementText,
+<<<<<<< HEAD
     confirmVoiceTally,
     toggleOffline,
 
     // Underwriting Telemetry
+=======
+
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     totalRevenue,
     totalExpenses,
     netProfit,
@@ -888,11 +1279,15 @@ Verify authenticity at cash2cred.co.za/verify/${profile?.passportCode || profile
     growthScore,
     activeJourneyStep,
 
+<<<<<<< HEAD
     // Monetization & Offline
+=======
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
     isPremium,
     setIsPremium,
     subscriptionModal,
     setSubscriptionModal,
+<<<<<<< HEAD
     upgradeSubscription,
     isOffline,
     setIsOffline,
@@ -902,6 +1297,19 @@ Verify authenticity at cash2cred.co.za/verify/${profile?.passportCode || profile
 
     // db instance
     db,
+=======
+
+    voiceTallyModal,
+    setVoiceTallyModal,
+    confirmVoiceTally,
+
+    isOffline,
+    setIsOffline,
+    toggleOffline,
+    offlineQueueCount,
+    syncNotification,
+    setSyncNotification,
+>>>>>>> a0b6e3b5f37ab32267f7c0ee6c980903100ed02c
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
