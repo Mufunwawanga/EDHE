@@ -1,73 +1,23 @@
+import React from "react";
+import { AppProvider, useApp } from "./context/AppContext";
+import Header from "./components/Header";
+import BottomNav from "./components/BottomNav";
+import Dashboard from "./components/Dashboard";
+import POS from "./components/POS";
+import TradeView from "./components/TradeView";
+import StockView from "./components/StockView";
+import Reviews from "./components/Reviews";
+import CreditId from "./components/CreditId";
+import { LanguageSelection, BusinessRegistration, LockScreen } from "./components/Onboarding";
+import Modals from "./components/Modals";
 import { AnimatePresence, motion } from "framer-motion";
-import { AppProvider, useApp } from "./context/AppContextFresh";
 
-function Shell({ title, children }) {
+function PhoneWrapper({ children }) {
   return (
-    <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-md rounded-[32px] border border-slate-200 bg-white shadow-xl overflow-hidden">
-        <header className="bg-slate-900 px-5 py-4 text-white flex items-center justify-between">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-slate-300">Zwix</p>
-            <h1 className="text-lg font-semibold">{title}</h1>
-          </div>
-        </header>
-        <main className="min-h-[720px] bg-slate-50">{children}</main>
-      </div>
-    </div>
-  );
-}
-
-function HomeScreen() {
-  const { setScreen } = useApp();
-
-  return (
-    <div className="p-5 space-y-5">
-      <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-slate-700 p-5 text-white shadow-md">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-300">Overview</p>
-        <h2 className="mt-2 text-3xl font-bold">Cash2Cred</h2>
-        <p className="mt-2 text-sm text-slate-200">Your business cashflow overview and credit activity dashboard.</p>
-      </div>
-
-      <div className="grid grid-cols-2 gap-3">
-        {{
-          Dashboard: "home",
-          POS: "pos",
-          Inventory: "inventory",
-          Reviews: "reviews",
-        }}
-      </div>
-    </div>
-  );
-}
-
-function PosScreen() {
-  return (
-    <div className="p-5">
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="text-xl font-semibold text-slate-800">Point of Sale</h2>
-        <p className="mt-2 text-sm text-slate-600">Sales tracking and quick checkout workflow are ready for the next product iteration.</p>
-      </div>
-    </div>
-  );
-}
-
-function InventoryScreen() {
-  return (
-    <div className="p-5">
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="text-xl font-semibold text-slate-800">Inventory</h2>
-        <p className="mt-2 text-sm text-slate-600">Stock snapshots and restock planning can be connected into the app state as needed.</p>
-      </div>
-    </div>
-  );
-}
-
-function ReviewsScreen() {
-  return (
-    <div className="p-5">
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="text-xl font-semibold text-slate-800">Reviews</h2>
-        <p className="mt-2 text-sm text-slate-600">Customer sentiment and feedback monitoring can be surfaced here.</p>
+    <div className="min-h-screen bg-slate-100 flex justify-center items-center p-2 sm:p-4">
+      {/* Smartphone Frame Container */}
+      <div className="relative mx-auto my-6 w-full max-w-[400px] h-[844px] max-h-[calc(100vh-3rem)] rounded-[48px] border-[5px] border-black shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] overflow-hidden bg-slate-50 flex flex-col">
+        {children}
       </div>
     </div>
   );
@@ -78,87 +28,70 @@ function MainApp() {
 
   if (!language) {
     return (
-      <Shell title="Language">
-        <div className="p-5">
-          <p className="mb-3 text-sm text-slate-600">Choose a language to continue.</p>
-          <div className="space-y-3">
-            {["English", "Afrikaans", "Zulu", "Sesotho"].map((option) => (
-              <button
-                key={option}
-                type="button"
-                onClick={() => setScreen("home")}
-                className="block w-full rounded-xl border border-slate-200 bg-white p-3 text-left text-slate-700 shadow-sm"
-              >
-                {option}
-              </button>
-            ))}
-          </div>
-        </div>
-      </Shell>
+      <PhoneWrapper>
+        <LanguageSelection />
+      </PhoneWrapper>
     );
   }
 
   if (!profile?.isConfigured) {
     return (
-      <Shell title="Setup">
-        <div className="p-5">
-          <h2 className="text-xl font-semibold text-slate-800">Business registration</h2>
-          <p className="mt-2 text-sm text-slate-600">Complete your onboarding steps to start using the app.</p>
-        </div>
-      </Shell>
+      <PhoneWrapper>
+        <BusinessRegistration />
+      </PhoneWrapper>
     );
   }
 
   if (!isLoggedIn) {
     return (
-      <Shell title="Security">
-        <div className="p-5">
-          <h2 className="text-xl font-semibold text-slate-800">Locked</h2>
-          <p className="mt-2 text-sm text-slate-600">Sign in to access your business workspace.</p>
-        </div>
-      </Shell>
+      <PhoneWrapper>
+        <LockScreen />
+      </PhoneWrapper>
     );
   }
 
   const renderScreen = () => {
     switch (screen) {
+      case "home":
+        return <Dashboard key="home" onNavigateToCreditId={() => setScreen("creditId")} />;
+      case "trade":
       case "pos":
-        return <PosScreen />;
+        return <TradeView key="trade" />;
+      case "stock":
       case "inventory":
-        return <InventoryScreen />;
+        return <StockView key="stock" />;
+      case "creditId":
+      case "access":
+        return <CreditId key="creditId" />;
       case "reviews":
-        return <ReviewsScreen />;
+        return <Reviews key="reviews" />;
       default:
-        return <HomeScreen />;
+        return <Dashboard key="home" onNavigateToCreditId={() => setScreen("creditId")} />;
     }
   };
 
   return (
-    <Shell title="Dashboard">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={screen}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.16, ease: "easeOut" }}
-          className="min-h-full"
-        >
-          {renderScreen()}
-        </motion.div>
-      </AnimatePresence>
+    <PhoneWrapper>
+      <Header />
 
-      <div className="border-t border-slate-200 bg-white px-3 py-3">
-        <div className="grid grid-cols-4 gap-2">
-          {{
-            home: "Home",
-            pos: "POS",
-            inventory: "Stock",
-            reviews: "Reviews",
-          }}
-        </div>
-      </div>
-    </Shell>
+      <main className="flex-1 overflow-y-auto relative bg-slate-50">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={screen}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.16, ease: "easeOut" }}
+            className="min-h-full"
+          >
+            {renderScreen()}
+          </motion.div>
+        </AnimatePresence>
+      </main>
+
+      <BottomNav />
+      <Modals />
+    </PhoneWrapper>
   );
 }
 
